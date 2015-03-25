@@ -5,48 +5,48 @@ class DBUtil{
 public:
 
 	/************************************************************
-	·â×° sqlite3²Ù×÷
+	å°è£… sqlite3æ“ä½œ
 	************************************************************/
-	//ÓÃÀ´´´½¨Ò»¸ödbÊý¾Ý¿â dbÎªÊý¾Ý¿âµÄÃû×Ö
-	//  ´ò¿ªÊý¾Ý¿â
+	//ç”¨æ¥åˆ›å»ºä¸€ä¸ªdbæ•°æ®åº“ dbä¸ºæ•°æ®åº“çš„åå­—
+	//  æ‰“å¼€æ•°æ®åº“
 	static void initDB(const char *db);
 
-	//ÓÃÀ´ÅÐ¶Ï±í¸ñÊÇ·ñ´æÔÚ
-	// name:±íÊ¾±íÃû
+	//ç”¨æ¥åˆ¤æ–­è¡¨æ ¼æ˜¯å¦å­˜åœ¨
+	// name:è¡¨ç¤ºè¡¨å
 	static bool tableIsExist(string name);
 
 
-	//ÓÃÀ´´´½¨Ò»¸ö±íÃûÎªnameµÄ±í¸ñ£¬´´½¨Ê±»áÏÈÆ¥ÅäÊ±·ñÓÐ¸Ã±íµÄ´æÔÚÈç¹û´æÔÚÔò²»´´½¨
-	//´´½¨±í
+	//ç”¨æ¥åˆ›å»ºä¸€ä¸ªè¡¨åä¸ºnameçš„è¡¨æ ¼ï¼Œåˆ›å»ºæ—¶ä¼šå…ˆåŒ¹é…æ—¶å¦æœ‰è¯¥è¡¨çš„å­˜åœ¨å¦‚æžœå­˜åœ¨åˆ™ä¸åˆ›å»º
+	//åˆ›å»ºè¡¨
 	static void createTable(string sql, string name);
 
-	//ÓÃÀ´É¾³ýÒ»ÕÅ±íÃûÎªnameµÄ±í¸ñ£¬É¾³ýÊ±»áÏÈÆ¥ÅäÊÇ·ñÓÐ¸Ã±íµÄ´æÔÚÈç¹û²»´æÔÚÔò²»Ö´ÐÐÉ¾³ý²Ù×÷
-	//É¾³ý±íÃû
+	//ç”¨æ¥åˆ é™¤ä¸€å¼ è¡¨åä¸ºnameçš„è¡¨æ ¼ï¼Œåˆ é™¤æ—¶ä¼šå…ˆåŒ¹é…æ˜¯å¦æœ‰è¯¥è¡¨çš„å­˜åœ¨å¦‚æžœä¸å­˜åœ¨åˆ™ä¸æ‰§è¡Œåˆ é™¤æ“ä½œ
+	//åˆ é™¤è¡¨å
 	static void deleteTable(string sql, string name);
 
-	//ÓÃÀ´Ïò±íÖÐ²åÈëÒ»ÌõÊý¾Ý
-	//²åÈëÒ»ÌõÊý¾Ý
+	//ç”¨æ¥å‘è¡¨ä¸­æ’å…¥ä¸€æ¡æ•°æ®
+	//æ’å…¥ä¸€æ¡æ•°æ®
 	static void insertData(string sql);
 
-	//ÓÃÀ´Ïò±íÖÐÉ¾³ýÒ»ÌõÊý¾Ý
-	//É¾³ýÒ»ÌõÊý¾Ý
+	//ç”¨æ¥å‘è¡¨ä¸­åˆ é™¤ä¸€æ¡æ•°æ®
+	//åˆ é™¤ä¸€æ¡æ•°æ®
 	static void deleteData(string sql);
 
-	//ÓÃÀ´Ïò±íÖÐÐÞ¸ÄÒ»ÌõÊý¾Ý
-	// ÐÞ¸ÄÒ»ÌõÊý¾Ý
+	//ç”¨æ¥å‘è¡¨ä¸­ä¿®æ”¹ä¸€æ¡æ•°æ®
+	// ä¿®æ”¹ä¸€æ¡æ•°æ®
 	static void updateData(string sql);
 
-	//»ñÈ¡Ò»¸ö¼ÇÂ¼µÄÌõÊý
-	// »ñµÃ¼ÇÂ¼µÄÌõÊý
+	//èŽ·å–ä¸€ä¸ªè®°å½•çš„æ¡æ•°
+	// èŽ·å¾—è®°å½•çš„æ¡æ•°
 	static int getDataCount(string sql);
 
-	//¶ÁÈ¡Ò»Ìõ¼ÇÂ¼µÄÐÅÏ¢
+	//è¯»å–ä¸€æ¡è®°å½•çš„ä¿¡æ¯
 	/*
-	*  ´Ë·½·¨ÊÇ²éÑ¯·½·¨,Ïàµ±Ö®ÖØÒª,pSender×îºÃÊÇ¸övector
+	*  æ­¤æ–¹æ³•æ˜¯æŸ¥è¯¢æ–¹æ³•,ç›¸å½“ä¹‹é‡è¦,pSenderæœ€å¥½æ˜¯ä¸ªvector
 	*/
 	static void getDataInfo(string sql, void *pSend);
 
-	//¹Ø±Õ´ò¿ªµÄÊý¾Ý¿â
+	//å…³é—­æ‰“å¼€çš„æ•°æ®åº“
 	static void closeDB();
 
 };

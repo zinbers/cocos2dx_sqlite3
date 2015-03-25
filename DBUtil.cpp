@@ -17,7 +17,7 @@ void DBUtil::initDB(const char *db)
 	//打开一个数据库，如果该数据库不存在，则创建一个数据库文件
 	result = sqlite3_open(db, &pDB);
 	if (result != SQLITE_OK)
-		("打开数据库失败，错误码:%d ，错误原因:%s\n", result, errMsg);
+		CCLog("打开数据库失败，错误码:%d ，错误原因:%s\n", result, errMsg);
 }
 
 
