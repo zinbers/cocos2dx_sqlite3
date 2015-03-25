@@ -1,7 +1,8 @@
 #include <string>
 using namespace std;
-class DBUtil{
+typedef map<string, vector<string>> mapStrVecstr;
 
+class DBUtil{
 public:
 
 	/************************************************************

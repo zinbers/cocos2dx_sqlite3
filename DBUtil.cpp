@@ -1,7 +1,9 @@
-#include "./sqlite-amalgamation-3080803/sqlite3.h"
+#include "sqlite3.h"
 #include "DBUtil.h"
 #include "cocos2d.h"
-#include "TestVO.h"
+#include <map>
+#include <vector>
+#include <string>
 using namespace std;
 USING_NS_CC;
 
@@ -125,22 +127,14 @@ int DBUtil::getDataCount(string sql)
 //getDataInfo的回调函数
 int loadRecord(void * para, int n_column, char ** column_value, char ** column_name)
 {
-	CCLOG("n_column:%d", n_column);
+	 CCLOG("n_column:%d", n_column);
 
-    TestVO* testVO = (TestVO*)para;
+    mapStrVecstr* pData = (mapStrVecstr*)para;
+    
+    for (int i = 0 ; i < n_column; i++) {
+        (*pData)[column_name[i]].push_back(column_value[i]);
+    }
 
-	testVO->mId = atoi(column_value[0]);
-	testVO->level = atoi(column_value[1]);
-	testVO->lastscore = atoi(column_value[2]);
-	testVO->bestscore = atoi(column_value[3]);
-	testVO->star = atoi(column_value[4]);
-
-
-	/* 可能有5个字段 */
-	// id level lastscore bestscore star
-	//    CCLOG("c[0]:%s,c[1]:%s,c[2]:%s,c[3]:%s,c[4]:%s",column_name[0],column_name[1],column_name[2],column_name[3],column_name[4]);
-	//    
-	CCLog("id=%s,level=%s,lastscore=%s,bestscore=%s,star=%s", column_value[0], column_value[1], column_value[2], column_value[3], column_value[4]);
 	return 0;
 }
 //获取一条记录的信息 其中的pSend是一个实体类我们以后可以自定义一个继承了CCObject的类来代替他保存数据库中取出来的数据
